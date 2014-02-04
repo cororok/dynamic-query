@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<project default="main">
+	<property name="build" location="bin" />
+	<property name="dist" location="dist" />
+	<property name="version" value="1.0" />
+
+	<target name="main" depends="makeJar,makeJarTest" description="Main target">
+	</target>
+	
+	<target name="makeJar" description="compress package cororok">
+		<echo>compress cororok.*</echo>
+		<jar destfile="${dist}/cororok-dq-${version}.jar" basedir="${build}" includes="cororok/dq/**" />
+	</target>
+	
+	<target name="makeJarTest" description="compress package example">
+		<echo>compress cororok.*</echo>
+		<jar destfile="${dist}/cororok-dq-example-${version}.jar" basedir="${build}" includes="examples/**,*.sql" />
+	</target>
+</project>
