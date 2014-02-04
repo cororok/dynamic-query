@@ -65,9 +65,9 @@ public class Sample {
 			ex.basicSelect(conn);
 
 			ex.select(conn);
-			ex.transaction(ex.getConnection(), "alpha", "me", 1);
-			ex.transaction(ex.getConnection(), "alpha", "beta", 1000);
-			ex.transaction(ex.getConnection(), "alpha", "beta", 2);
+			ex.testTransaction(ex.getConnection(), "alpha", "me", 1);
+			ex.testTransaction(ex.getConnection(), "alpha", "beta", 1000);
+			ex.testTransaction(ex.getConnection(), "alpha", "beta", 2);
 
 		} catch (ParsingException e) {
 			e.printStackTrace();
@@ -186,7 +186,7 @@ public class Sample {
 		}
 	}
 
-	private int transaction(Connection conn, String from, String to,
+	private int testTransaction(Connection conn, String from, String to,
 			double amount) {
 		System.out.println("############# transaction ##########");
 		QueryUtil getAmount = qm.createQueryUtil("getAmount");
