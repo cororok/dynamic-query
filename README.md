@@ -39,6 +39,4 @@ It uses a log library. download library from below
 If you want to use cororok.dq.util.QueryMapHelper to manage QueryMap, 
 you will need dq.properties in the root path of your application. see below files
 	demo/dq.properties 
-	demo/examples/HelperTest.java 
-
-	
+	demo/examples/HelperTest.java	
