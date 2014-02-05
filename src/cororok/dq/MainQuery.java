@@ -17,7 +17,7 @@ public class MainQuery extends Query {
 
 	private ExtQuery[] extQueries;
 
-	MainQuery(String id, String text) {
+	public MainQuery(String id, String text) {
 		super(id, text);
 	}
 

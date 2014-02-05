@@ -9,7 +9,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import cororok.dq.mapper.ParameterMapper;
 import cororok.dq.mapper.ResultSetMapper;
 import cororok.dq.mapper.SimpleParameterMapper;
-import cororok.dq.mapper.SimpleResultSetMapper;
+import cororok.dq.mapper.TimestampResultSetMapper;
 import cororok.dq.parser.ParsingException;
 
 /**
@@ -38,7 +38,7 @@ public class QueryMap {
 	/**
 	 * is shared by QueryUtils created by this instance.
 	 */
-	ResultSetMapper resultSetMapper = SimpleResultSetMapper.getInstance();
+	ResultSetMapper resultSetMapper = TimestampResultSetMapper.getInstance();
 
 	public QueryMap(Map<String, MainQuery> mainQueries) throws ParsingException {
 		this.mainQueries = mainQueries;
