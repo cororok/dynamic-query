@@ -123,8 +123,12 @@ public class QueryMap {
 
 	}
 
-	ParameterMapper getParameterMapper() {
-		return parameterMapper;
+	public ParameterMapper getParameterMapper() {
+		return this.parameterMapper;
+	}
+
+	public ResultSetMapper getResultSetMapper() {
+		return this.resultSetMapper;
 	}
 
 	/**
