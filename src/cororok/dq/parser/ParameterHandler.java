@@ -38,9 +38,8 @@ public class ParameterHandler extends IdHandler {
 		TextHandler textHandler = (TextHandler) context.getCallerHandler();
 
 		String columnNameInSQL = textHandler.getPreviousColumnName();
-		String parameterName = Characters.convertColumnName(columnNameInSQL);
 
-		token.addString(parameterName);
+		token.addString(columnNameInSQL);
 		close();
 		exit();
 	}
