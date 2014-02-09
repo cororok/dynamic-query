@@ -58,7 +58,7 @@ Array or Map. see below example. tried to minimize the performance loss and memo
 
 **setting example**
 ```java
-ueryUtil qu = qm.createQueryUtil("selectAll");
+QueryUtil qu = qm.createQueryUtil("selectAll");
 try {
 	qu.setConnection(conn);
 
@@ -118,12 +118,16 @@ It uses a log library **SLF4J**. download library from below
 
 ## Usage
 see demo firt **./demo/examples/Sample.java**
-1. Copy and put a jar file **./dist/cororok-dq-1.0.jar** to your project. 
-2. write your **sql files**. It can be located anywhere.
-3. (Optional file) **dq.properties**.
+
+1. Copy and put a jar file **./dist/cororok-dq-1.0.jar** to your project
+2. write your **sql files**. It can be located anywhere
+3. (Optional file) **dq.properties**
+
 If you want to use cororok.dq.util.QueryMapHelper to manage QueryMap, 
-you will need dq.properties in the root path of your application. see below example.
-	demo/dq.properties 
-	demo/examples/HelperTest.java 
+you will need **dq.properties** in the root path of your application. see below example.
+
+* demo/dq.properties
+* demo/examples/HelperTest.java
+
 
 	
