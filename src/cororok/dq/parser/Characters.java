@@ -56,36 +56,78 @@ public class Characters {
 		throw new UnsupportedCharacterException(c);
 	}
 
+	/**
+	 * table column name to name of java field. ex) user_name -> userName.
+	 * 
+	 * A_a/A_A/a_a -> aA
+	 * 
+	 * a1 -> a1, a_1 -> a_1 : It keeps '_' because to support reverse
+	 * conversion.
+	 * 
+	 * a__a -> a_A
+	 * 
+	 * @param columnNameInSQL
+	 *            table column name
+	 * @return name of java fields
+	 */
 	public static String convertColumnName(String columnNameInSQL) {
 		char[] chs = columnNameInSQL.toCharArray();
 		char[] result = new char[chs.length];
 
-		boolean changed = false;
 		char pre = 0;
 		int j = 0;
-		for (int i = 0; i < chs.length; i++, j++) {
-			char ch = chs[i];
-			if (ch == '_') {
-				--j;
-				changed = true;
-			} else if (j > 0 && pre == '_') {
-				if (ch >= 'a' && ch <= 'z') {
-					result[j] = (char) (ch - 32); // up
-					changed = true;
-				} else
-					result[j] = ch;
-			} else if (ch >= 'A' && ch <= 'Z') {
-				result[j] = (char) (ch + 32); // down
-				changed = true;
-			} else
-				result[j] = ch;
 
+		for (int i = 0; i < chs.length; i++) {
+			char ch = chs[i];
+
+			if (i == 0) {
+				if (ch >= 'A' && ch <= 'Z')
+					ch = (char) (ch + 32); // down
+
+				pre = ch;
+				continue;
+			}
+
+			if (pre == '_') {
+				if ((ch >= 'a' && ch <= 'z')) {
+					ch = (char) (ch - 32); // up
+				} else if (ch >= 'A' && ch <= 'Z') {
+					;
+				} else
+					result[j++] = pre;
+			} else if (ch >= 'A' && ch <= 'Z') {
+				ch = (char) (ch + 32); // down
+				result[j++] = pre;
+			} else {
+				result[j++] = pre;
+			}
 			pre = ch;
 		}
-		if (changed)
-			return String.valueOf(result, 0, j);
-		else
-			return columnNameInSQL;
+		result[j++] = pre; // last one
+		return String.valueOf(result, 0, j);
+	}
+
+	/**
+	 * javaName to sqlName, ex) userName -> user_name
+	 * 
+	 * @param javaName
+	 *            name of java variable
+	 * @return name of table column
+	 */
+	public static String convertJavaName(String javaName) {
+		char[] chs = javaName.toCharArray();
+
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < chs.length; i++) {
+			char ch = chs[i];
+			if (ch >= 'A' && ch <= 'Z') {
+				sb.append('_');
+				sb.append((char) (ch + 32));
+			} else
+				sb.append(ch);
+		}
+
+		return sb.toString();
 	}
 
 }

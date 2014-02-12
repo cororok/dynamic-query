@@ -77,6 +77,11 @@ public class Token {
 		return sb.charAt(index);
 	}
 
+	/**
+	 * find the column name before the first '=', '<=', '>=', '!=' or '<>'
+	 * 
+	 * @return
+	 */
 	public String getPreviousColumnName() {
 		if (started == false)
 			return null;
@@ -100,9 +105,21 @@ public class Token {
 				}
 			}
 
-			if (xStart == false && c == '=') {
-				xStart = true;
-				continue;
+			if (xStart == false) {
+				if (c == '=') {
+					xStart = true;
+					char preC = sb.charAt(i - 1);
+					if (preC == '>' || preC == '<' || preC == '!')
+						--i;
+
+					continue;
+				} else if (c == '>') {
+					if (sb.charAt(i - 1) == '<') {
+						--i;
+						xStart = true;
+						continue;
+					}
+				}
 			}
 		}
 		if (previousColumnName.length() == 0)
