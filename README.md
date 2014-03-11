@@ -4,13 +4,13 @@ dynamic-query
 
 ## What is it?
 It is a **java database framework** located between low level JDBC and high level ORM. 
-* **Low level JDBC** - You can achieve the best performace but it's annoying.
+* **Low level JDBC** - You can achieve the best performance but it's annoying.
 * **ORM** - It's convenient but hard for complex joins and some restrictions.
 
 
 ## features 
 **1. plain SQL.**
-It doesn't use XML or other formats containg redundant tags. But it uses the native SQL with minimal syntax.
+It doesn't use XML or other formats containing redundant tags. But it uses the native SQL with minimal syntax.
 It doesn't even use " or '. See below an example file *sample.sql*. It looks like just a saved query with name *listUsers*.
 
 ```sql

@@ -353,14 +353,10 @@ public class QueryUtil extends ResultSetQueryUtil {
 	 * @throws SQLException
 	 */
 	public Object[] populateArray() throws SQLException {
-		Object[] result = new Object[this.columns.size()];
-		int i = 0;
+		Object[] results = new Object[this.columns.size()];
 
-		while (i < this.columns.size()) {
-			int columnType = this.types.get(i);
-			result[i] = resultSetMapper.getObject(rs, ++i, columnType);
-		}
-		return result;
+		updateArray(results);
+		return results;
 	}
 
 	/**
@@ -463,12 +459,32 @@ public class QueryUtil extends ResultSetQueryUtil {
 
 	/**
 	 * You should call rs.next() first to see if there is available row in rs.
-	 * If the name of field of bean is the same name of column of rs it gets the
-	 * value from rs and sets the value to bean. It can be no update at all if
-	 * there is no same name between columns or rs and the bean.
+	 * It updates given array with values of rs so the array can be reused. It
+	 * uses resultSetMapper given by You should call rs.next() first to see if
+	 * there is available row in rs. constructor.
+	 * 
+	 * @param results
+	 *            an array to be updated by resultSetMapper.getObject(..);
+	 * @throws SQLException
+	 */
+	public void updateArray(Object[] results) throws SQLException {
+		int i = 0;
+
+		while (i < this.columns.size()) {
+			int columnType = this.types.get(i);
+			results[i] = resultSetMapper.getObject(rs, ++i, columnType);
+		}
+	}
+
+	/**
+	 * You should call rs.next() first to see if there is available row in rs.It
+	 * updates given bean with values of rs so the bean can be reused. If the
+	 * name of field of bean is the same name of column of rs it gets the value
+	 * from rs and sets the value to bean. It can be no update at all if there
+	 * is no the same name between columns of rs and fields of the bean.
 	 * 
 	 * @param bean
-	 *            s bean to be updated by rs.getXXX();
+	 *            a bean to be updated by rs.getXXX();
 	 * @throws Exception
 	 */
 	public void updateBean(Object bean) throws Exception {
