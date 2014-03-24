@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import cororok.dq.Query;
@@ -63,6 +64,7 @@ public class Sample {
 			ex.select(conn);
 
 			ex.basicSelect(conn);
+			ex.list(conn);
 
 			ex.select(conn);
 			ex.testTransaction(ex.getConnection(), "alpha", "me", 1);
@@ -179,6 +181,30 @@ public class Sample {
 				String emailAddress = qu.getString("email_address"); // not
 																		// emailAddress
 			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			qu.closeJust();
+		}
+	}
+	
+	private void list(Connection conn) {
+		System.out.println("############# list ##########");
+		QueryUtil qu = qm.createQueryUtil("selectAll");
+		try {
+			qu.setConnection(conn);
+			qu.executeQuery();
+
+			System.out.println("--bean list ");
+			List<User> userList = qu.list(User.class);
+			System.out.println("user list size=" + userList.size());
+			System.out.println(userList.get(0).getUserName());
+
+			qu.executeQuery();
+			System.out.println("--object list ");
+			List<Object[]> objectArrayList = qu.listArray();
+			System.out.println("array list size=" + objectArrayList.size());
+			System.out.println(objectArrayList.get(0)[1]);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

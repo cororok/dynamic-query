@@ -119,7 +119,7 @@ It uses a log library **SLF4J**. download library from below
 ## Usage
 see demo firt **./demo/examples/Sample.java**
 
-1. Copy and put a jar file **./dist/cororok-dq-1.0.jar** to your project
+1. Copy and put a jar file **./dist/cororok-dq-1.1.jar** to your project
 2. write your **sql files**. It can be located anywhere
 3. (Optional file) **dq.properties**
 

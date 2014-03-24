@@ -1,6 +1,7 @@
 package cororok.dq.util;
 
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
@@ -9,17 +10,21 @@ import java.util.Set;
  * @author songduk.park cororok@gmail.com
  * 
  */
-public class CachedMap<K, V extends LinkedNode<K>> implements Map<K, V> {
+public class CachedMap<K, V extends LinkedNode<K, V>> implements Map<K, V> {
 
 	Map<K, V> map;
 
-	V head;
-	V tail;
-	int cacheSize;
+	final int cacheSize;
+
+	LinkedList<V> list = new LinkedList<V>();
 
 	public CachedMap(Map<K, V> map, int cacheSize) {
 		this.map = map;
-		this.cacheSize = cacheSize;
+
+		if (cacheSize < 10)
+			this.cacheSize = 20;
+		else
+			this.cacheSize = cacheSize;
 	}
 
 	@Override
@@ -48,101 +53,56 @@ public class CachedMap<K, V extends LinkedNode<K>> implements Map<K, V> {
 
 	@Override
 	public V get(Object key) {
-		V v = map.get(key);
-		if (v == null)
+		V oldV = map.get(key);
+		if (oldV == null)
 			return null;
 
-		if (v != head) {
-			if (v == tail) {
-				tail = (V) v.getPrevios();
-			}
-
-			removeLink(v);
-			putFirst(v);
-		}
-		return v;
+		list.moveToFirst(oldV);
+		return oldV;
 	}
 
-	private void removeLink(V v) {
-		V prev = (V) v.getPrevios();
-		V next = (V) v.getNext();
-		if (prev != null)
-			prev.setNext(next);
-		if (next != null)
-			next.setPrevios(prev);
-	}
-
+	@Override
 	public V put(K key, V value) {
-		V v = map.put(key, value);
-		if (v == null)
-			putFirst(value);
+		V oldV = map.put(key, value);
+
+		if (oldV != null)
+			list.removeNode(oldV);
 
 		if (size() > cacheSize)
-			remove(tail.getKey());
-		return v;
-	}
+			map.remove(list.removeTail().getKey());
 
-	public void printLinks() {
-		if (head != null) {
-			System.out.println("head=" + head.getKey());
-			if (tail != null)
-				System.out.println("tail=" + tail.getKey());
-
-			V node = head;
-			while (true) {
-				Object pre = null;
-				if (node.getPrevios() != null)
-					pre = node.getPrevios().getKey();
-
-				System.out.println(node.getKey() + " pre=" + pre);
-				node = (V) node.getNext();
-				if (node == null)
-					return;
-			}
-		}
-	}
-
-	private void putFirst(V value) {
-		if (head == null) {
-			head = value;
-			tail = value;
-
-			value.setNext(null);
-			value.setPrevios(null);
-			return;
-		}
-
-		// there is an existing head
-		value.setPrevios(null);
-		value.setNext(head);
-		head.setPrevios(value);
-		this.head = value;
+		list.addHead(value);
+		return oldV;
 	}
 
 	@Override
 	public V remove(Object key) {
-		V v = map.remove(key);
-		if (v != null) {
-			if (v == head) {
-				head = (V) v.getNext();
-			} else if (v == tail) {
-				tail = (V) v.getPrevios();
-			}
-			removeLink(v);
-			v.setNext(null);
-			v.setPrevios(null);
-		}
-		return v;
+		V oldV = map.remove(key);
+
+		if (oldV != null)
+			list.removeNode(oldV);
+
+		return oldV;
 	}
 
 	@Override
 	public void putAll(Map<? extends K, ? extends V> m) {
 		map.putAll(m);
+
+		Iterator<? extends V> itr = m.values().iterator();
+		while (itr.hasNext()) {
+			V v = itr.next();
+			list.addHead(v);
+		}
+
+		while (map.size() > cacheSize)
+			list.removeTail();
 	}
 
 	@Override
 	public void clear() {
 		map.clear();
+		list.clear();
 	}
 
 	@Override

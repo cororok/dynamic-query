@@ -52,18 +52,18 @@ public class QueryMapHelper {
 		loadFiles(p);
 	}
 
-	private void loadFiles(Properties p) {
-		Enumeration<Object> enu = p.keys();
+	private void loadFiles(Properties pro) {
+		Enumeration<Object> enu = pro.keys();
 		while (enu.hasMoreElements()) {
 			String key = (String) enu.nextElement();
 
 			if (key.contains(".") == false) {
-				String filePath = p.getProperty(key);
+				String filePath = pro.getProperty(key).trim();
 				String cachId = key + ".size";
 
 				int cacheSize = 0;
-				if (p.contains(cachId)) {
-					cacheSize = Integer.parseInt((String) p.get(cachId));
+				if (pro.contains(cachId)) {
+					cacheSize = Integer.parseInt((String) pro.get(cachId));
 				}
 				try {
 					QueryMap qm = QueryFactory.createQueryMap(filePath,

@@ -7,32 +7,33 @@ import cororok.dq.util.LinkedNode;
  * @author songduk.park cororok@gmail.com
  * 
  */
-public class LinkedQuery extends Query implements LinkedNode<String> {
+public class LinkedQuery extends Query implements
+		LinkedNode<String, LinkedQuery> {
 
-	LinkedNode<String> prev;
-	LinkedNode<String> next;
+	LinkedQuery prev;
+	LinkedQuery next;
 
 	LinkedQuery(String newId) {
 		super(newId);
 	}
 
 	@Override
-	public void setNext(LinkedNode<String> next) {
+	public void setNext(LinkedQuery next) {
 		this.next = next;
 	}
 
 	@Override
-	public LinkedNode<String> getNext() {
+	public LinkedQuery getNext() {
 		return this.next;
 	}
 
 	@Override
-	public void setPrevios(LinkedNode<String> previous) {
+	public void setPrevios(LinkedQuery previous) {
 		this.prev = previous;
 	}
 
 	@Override
-	public LinkedNode<String> getPrevios() {
+	public LinkedQuery getPrevios() {
 		return this.prev;
 	}
 

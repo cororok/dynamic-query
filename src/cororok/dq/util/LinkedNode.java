@@ -5,16 +5,17 @@ package cororok.dq.util;
  * @author songduk.park cororok@gmail.com
  * 
  */
-public interface LinkedNode<K> {
+public interface LinkedNode<K, E extends LinkedNode<K, E>> {
 
-	public void setNext(LinkedNode<K> next);
+	public void setNext(E next);
 
-	public LinkedNode<K> getNext();
+	public E getNext();
 
-	public void setPrevios(LinkedNode<K> previous);
+	public void setPrevios(E previous);
 
-	public LinkedNode<K> getPrevios();
+	public E getPrevios();
 
 	public K getKey();
+	
 
 }
