@@ -1,5 +1,10 @@
 package cororok.dq.util;
 
+/**
+ * @author songduk.park cororok@gmail.com
+ *
+ * @param <E>
+ */
 public class LinkedList<E extends LinkedNode<?, E>> {
 
 	E head;

@@ -13,6 +13,10 @@ import cororok.dq.QueryFactory;
 import cororok.dq.QueryMap;
 import cororok.dq.parser.ParsingException;
 
+/**
+ * @author songduk.park cororok@gmail.com
+ *
+ */
 public class QueryMapHelper {
 
 	private static Map<String, QueryMap> maps = new HashMap<String, QueryMap>();

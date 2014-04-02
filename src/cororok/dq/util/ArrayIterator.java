@@ -2,6 +2,11 @@ package cororok.dq.util;
 
 import java.util.Iterator;
 
+/**
+ * @author songduk.park cororok@gmail.com
+ *
+ * @param <E>
+ */
 public class ArrayIterator<E> implements Iterator<E> {
 
 	private E[] ts;

@@ -2,6 +2,11 @@ package cororok.dq.util;
 
 import java.util.Iterator;
 
+/**
+ * @author songduk.park cororok@gmail.com
+ *
+ * @param <E>
+ */
 public class ReadOnlyArray<E extends Comparable<E>> implements
 		Comparable<ReadOnlyArray<E>>, Iterable<E> {
 

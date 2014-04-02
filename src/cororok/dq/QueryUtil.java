@@ -494,18 +494,6 @@ public class QueryUtil extends ResultSetQueryUtil {
 		}
 	}
 
-	protected void setMetaData(ReadOnlyArray<String> columns, ReadOnlyInts types)
-			throws SQLException {
-		this.columns = MetaInfoMap.getOrPutColumns(columns);
-		this.types = MetaInfoMap.getOrPutTypes(types);
-
-		synchronized (query) {
-			if (query.getColumns() != null) // double check
-				query.setMetaData(columns, types);
-		}
-
-	}
-
 	/**
 	 * # of objs should be the same # of parameters. It sets objs to ps. It uses
 	 * parameterMapper given by constructor.
@@ -644,28 +632,44 @@ public class QueryUtil extends ResultSetQueryUtil {
 		if (this.columns != null)
 			return;
 
-		ReadOnlyArray<String> columns = query.getColumns();
-		if (columns != null) {
-			this.columns = columns;
-			this.types = query.getTypes();
+		// type first because type is assigned after column in query
+		this.types = query.getTypes();
+		if (this.types != null) {
+			this.columns = query.getColumns();
 			return;
 		}
 
-		// build a new one
-		ResultSetMetaData meta = rs.getMetaData();
-		int columnCount = meta.getColumnCount();
+		// lock per query
+		synchronized (query) {
+			// double check
+			this.types = query.getTypes();
+			if (this.types != null) {
+				this.columns = query.getColumns();
+			} else {
+				// build a new one
+				ResultSetMetaData meta = rs.getMetaData();
+				int columnCount = meta.getColumnCount();
 
-		String[] columnNames = new String[columnCount];
-		int[] columnTypes = new int[columnCount];
+				String[] columnNames = new String[columnCount];
+				int[] columnTypes = new int[columnCount];
 
-		for (int i = 0; i < columnCount; i++) {
-			int index = i + 1;
-			columnNames[i] = convertColumnName(meta.getColumnName(index));
-			columnTypes[i] = meta.getColumnType(index);
+				for (int i = 0; i < columnCount; i++) {
+					int index = i + 1;
+					columnNames[i] = convertColumnName(meta
+							.getColumnName(index));
+					columnTypes[i] = meta.getColumnType(index);
+				}
+
+				// register a new one to a global map
+				// it may return old one then use old one to avoid duplication
+				this.columns = MetaInfoMap
+						.getOrPutColumns(new ReadOnlyArray<String>(columnNames));
+				this.types = MetaInfoMap.getOrPutTypes(new ReadOnlyInts(
+						columnTypes));
+
+				query.setMetaData(columns, types);
+			}
 		}
-
-		setMetaData(new ReadOnlyArray<String>(columnNames), new ReadOnlyInts(
-				columnTypes));
 	}
 
 	/**
