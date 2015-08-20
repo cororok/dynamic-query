@@ -103,8 +103,7 @@ public class MainQuery extends Query {
 			}
 		}
 		if (notFound != null)
-			throw new RuntimeException("counldn't find subIds"
-					+ notFound.toString());
+			throw new RuntimeException("counldn't find subIds" + notFound.toString());
 
 		// rest of text
 		if (position < text.length()) {
@@ -124,8 +123,7 @@ public class MainQuery extends Query {
 			newSubQuery.parameters = newParameters.toArray(STRING_ARRAY);
 	}
 
-	void updateSharedQuery(Map<String, MainQuery> mainQueries)
-			throws ParsingException {
+	void updateSharedQuery(Map<String, MainQuery> mainQueries) throws ParsingException {
 		if (extQueries == null)
 			return;
 
@@ -135,8 +133,7 @@ public class MainQuery extends Query {
 
 			MainQuery sharedOne = mainQueries.get(extQuery.getId());
 			if (sharedOne == null)
-				throw new ParsingException("there is no main query, id="
-						+ extQuery.getId());
+				throw new ParsingException("there is no main query, id=" + extQuery.getId());
 
 			extQuery.text = sharedOne.text;
 			extQuery.parameters = sharedOne.parameters;

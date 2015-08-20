@@ -7,8 +7,7 @@ import cororok.dq.util.LinkedNode;
  * @author songduk.park cororok@gmail.com
  * 
  */
-public class LinkedQuery extends Query implements
-		LinkedNode<String, LinkedQuery> {
+public class LinkedQuery extends Query implements LinkedNode<String, LinkedQuery> {
 
 	LinkedQuery prev;
 	LinkedQuery next;

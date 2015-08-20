@@ -31,8 +31,7 @@ public class TokenContext implements CharacterHandler {
 	String subFile;
 
 	/**
-	 * It is like the unix pipe, this sends output to builder as builder's
-	 * input.
+	 * It is like the unix pipe, this sends output to builder as builder's input.
 	 */
 	QueryBuilder queryBuilder;
 	FileInfo fileInfo;
@@ -52,8 +51,7 @@ public class TokenContext implements CharacterHandler {
 		this.queryBuilder.close();
 
 		if (countWarn > 0)
-			log.warn("It warned " + countWarn
-					+ " times. Please check warnnings. Thank you");
+			log.warn("It warned " + countWarn + " times. Please check warnnings. Thank you");
 	}
 
 	@Override
@@ -139,8 +137,7 @@ public class TokenContext implements CharacterHandler {
 	/**
 	 * replace the current handler with new one
 	 * 
-	 * @param handler
-	 *            new handler
+	 * @param handler new handler
 	 */
 	void setHandler(CharacterHandler handler) {
 		this.currentHandler = handler;

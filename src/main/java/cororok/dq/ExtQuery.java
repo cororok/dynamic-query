@@ -11,8 +11,8 @@ import java.util.List;
 public class ExtQuery extends Query {
 
 	/**
-	 * The position where this ext Query starts at its main Query. It is used to
-	 * find the position where this query is inserted in its main query.
+	 * The position where this ext Query starts at its main Query. It is used to find the position where this query is
+	 * inserted in its main query.
 	 */
 	int beginPosition;
 

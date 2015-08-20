@@ -10,9 +10,8 @@ import java.sql.SQLException;
  */
 public interface ParameterMapper {
 
-	void setParameterValue(PreparedStatement ps, int parameterIndex,
-			Object parameter) throws SQLException;
+	void setParameterValue(PreparedStatement ps, int parameterIndex, Object parameter) throws SQLException;
 
-	void setParameterValue(PreparedStatement ps, int parameterIndex,
-			Object parameterValue, int fieldType) throws SQLException;
+	void setParameterValue(PreparedStatement ps, int parameterIndex, Object parameterValue, int fieldType)
+			throws SQLException;
 }

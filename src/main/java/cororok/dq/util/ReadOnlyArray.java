@@ -7,8 +7,7 @@ import java.util.Iterator;
  *
  * @param <E>
  */
-public class ReadOnlyArray<E extends Comparable<E>> implements
-		Comparable<ReadOnlyArray<E>>, Iterable<E> {
+public class ReadOnlyArray<E extends Comparable<E>> implements Comparable<ReadOnlyArray<E>>, Iterable<E> {
 
 	private E[] es;
 

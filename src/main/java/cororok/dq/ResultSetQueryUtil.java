@@ -169,8 +169,7 @@ public class ResultSetQueryUtil extends AbstractQueryUtil {
 	/**
 	 * {@link java.sql.ResultSet#getTimestamp}
 	 */
-	public Timestamp getTimestamp(int columnIndex, Calendar cal)
-			throws SQLException {
+	public Timestamp getTimestamp(int columnIndex, Calendar cal) throws SQLException {
 		return rs.getTimestamp(columnIndex, cal);
 	}
 

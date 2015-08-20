@@ -10,7 +10,6 @@ import java.sql.SQLException;
  */
 public interface ResultSetMapper {
 
-	public Object getObject(ResultSet rs, int columnIndex, int columnType)
-			throws SQLException;
+	public Object getObject(ResultSet rs, int columnIndex, int columnType) throws SQLException;
 
 }

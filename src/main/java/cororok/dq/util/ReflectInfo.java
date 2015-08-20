@@ -44,8 +44,7 @@ public class ReflectInfo {
 		return types[index];
 	}
 
-	public void setFieldValue(int index, Object bean, Object newValue)
-			throws Exception {
+	public void setFieldValue(int index, Object bean, Object newValue) throws Exception {
 		fields[index].set(bean, newValue);
 	}
 

@@ -13,8 +13,7 @@ public class ReflectUtil {
 
 	public static FiledComparator FIELD_COMPARATOR = new FiledComparator();
 
-	public static ReflectInfo buildReflectInfo(String className)
-			throws Exception {
+	public static ReflectInfo buildReflectInfo(String className) throws Exception {
 		return buildReflectInfo(Class.forName(className));
 	}
 

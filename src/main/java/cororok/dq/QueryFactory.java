@@ -46,8 +46,7 @@ public class QueryFactory {
 	 * @return
 	 * @throws ParsingException
 	 */
-	public static QueryMap createQueryMap(String file, int cacheSize)
-			throws ParsingException {
+	public static QueryMap createQueryMap(String file, int cacheSize) throws ParsingException {
 		QueryBuilder builder = createQueryBuilder();
 		QueryParser parser = createQueryParser(builder);
 
@@ -58,14 +57,12 @@ public class QueryFactory {
 	/**
 	 * create a QueryMap with reader
 	 * 
-	 * @param reader
-	 *            contains sqls
+	 * @param reader contains sqls
 	 * 
 	 * @return
 	 * @throws ParsingException
 	 */
-	public static QueryMap createQueryMap(Reader reader)
-			throws ParsingException {
+	public static QueryMap createQueryMap(Reader reader) throws ParsingException {
 		return createQueryMap(reader, 0);
 	}
 
@@ -77,8 +74,7 @@ public class QueryFactory {
 	 * @return
 	 * @throws ParsingException
 	 */
-	public static QueryMap createQueryMap(Reader reader, int cacheSize)
-			throws ParsingException {
+	public static QueryMap createQueryMap(Reader reader, int cacheSize) throws ParsingException {
 		QueryBuilder builder = createQueryBuilder();
 		QueryParser parser = createQueryParser(builder);
 
@@ -86,8 +82,7 @@ public class QueryFactory {
 		return createQueryMap(builder.getQueries(), cacheSize);
 	}
 
-	private static QueryMap createQueryMap(Map<String, MainQuery> map,
-			int cacheSize) throws ParsingException {
+	private static QueryMap createQueryMap(Map<String, MainQuery> map, int cacheSize) throws ParsingException {
 		if (cacheSize > 0)
 			return new CachedQueryMap(map, cacheSize);
 		else

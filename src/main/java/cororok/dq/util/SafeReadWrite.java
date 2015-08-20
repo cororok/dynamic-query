@@ -1,9 +1,8 @@
 package cororok.dq.util;
 
 /**
- * It is good when there are many read access but few write access. It does not
- * lock for read access so can be multiple read access at a time but write
- * access uses a lock.
+ * It is good when there are many read access but few write access. It does not lock for read access so can be multiple
+ * read access at a time but write access uses a lock.
  * 
  * @author songduk.park cororok@gmail.com
  * 

@@ -27,6 +27,7 @@ public class Sample {
 	QueryMap qm2; // you can create a multiple qm.
 
 	String queryFilePath = "examples/sample.sql";
+
 	{
 		try {
 			Class.forName(jdbcClass);
@@ -106,8 +107,8 @@ public class Sample {
 			result += qu.executeUpdate(blankBean);
 
 			// with array -- be careful of types
-			result += qu.executeUpdateParameters("gamma", "gamma@gmail.com",
-					30.3, new Timestamp(System.currentTimeMillis()));
+			result += qu.executeUpdateParameters("gamma", "gamma@gmail.com", 30.3,
+					new Timestamp(System.currentTimeMillis()));
 
 			// with empty array
 			result += qu.executeUpdateParameters(null, null, null, null);
@@ -187,7 +188,7 @@ public class Sample {
 			qu.closeJust();
 		}
 	}
-	
+
 	private void list(Connection conn) {
 		System.out.println("############# list ##########");
 		QueryUtil qu = qm.createQueryUtil("selectAll");
@@ -212,8 +213,7 @@ public class Sample {
 		}
 	}
 
-	private int testTransaction(Connection conn, String from, String to,
-			double amount) {
+	private int testTransaction(Connection conn, String from, String to, double amount) {
 		System.out.println("############# transaction ##########");
 		QueryUtil getAmount = qm.createQueryUtil("getAmount");
 		QueryUtil updateAmount = qm.createQueryUtil("updateAmount", "normal");
@@ -230,8 +230,7 @@ public class Sample {
 			if (getAmount.next()) {
 				oldAmount = getAmount.getDouble(1);
 				if (oldAmount < amount)
-					throw new Exception("not enough: " + oldAmount + " < "
-							+ amount);
+					throw new Exception("not enough: " + oldAmount + " < " + amount);
 			} else
 				throw new Exception("no data for " + from);
 
@@ -239,14 +238,12 @@ public class Sample {
 			double newAmount = oldAmount - amount;
 			result = updateAmount.executeUpdateParameters(newAmount, from);
 			if (result == 0)
-				throw new Exception("update faied for " + from + " , amt="
-						+ newAmount);
+				throw new Exception("update faied for " + from + " , amt=" + newAmount);
 
 			// update to
 			result = updateAmountAdd.executeUpdateParameters(amount, to);
 			if (result == 0)
-				throw new Exception("update faied for " + to + " , amt="
-						+ amount);
+				throw new Exception("update faied for " + to + " , amt=" + amount);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

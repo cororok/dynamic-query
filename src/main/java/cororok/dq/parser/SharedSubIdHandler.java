@@ -18,8 +18,7 @@ public class SharedSubIdHandler extends IdHandler {
 
 	@Override
 	public void exit() throws ParsingException {
-		context.queryBuilder.addSharedId(token,
-				context.subIdHandler.startingPosition);
+		context.queryBuilder.addSharedId(token, context.subIdHandler.startingPosition);
 
 		context.setHandler(context.textHandler);
 	}

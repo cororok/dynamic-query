@@ -70,8 +70,7 @@ public class QueryMapHelper {
 					cacheSize = Integer.parseInt((String) pro.get(cachId));
 				}
 				try {
-					QueryMap qm = QueryFactory.createQueryMap(filePath,
-							cacheSize);
+					QueryMap qm = QueryFactory.createQueryMap(filePath, cacheSize);
 
 					maps.put(key, qm);
 				} catch (ParsingException e) {

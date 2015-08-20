@@ -22,8 +22,7 @@ public class MetaInfoMap {
 	static SafeReadWrite<ReadOnlyArray<String>, ReadOnlyArray<String>> rwColumnInfo = new MetaInfoMap.SafeReadWriteColumn();
 	static SafeReadWrite<ReadOnlyInts, ReadOnlyInts> rwTypeInfo = new MetaInfoMap.SafeReadWriteType();
 
-	static class SafeReadWriteReflection extends
-			SafeReadWrite<Class<?>, ReflectInfo> {
+	static class SafeReadWriteReflection extends SafeReadWrite<Class<?>, ReflectInfo> {
 		@Override
 		ReflectInfo writeLogic(Class<?> cl) {
 			// double check
@@ -42,8 +41,7 @@ public class MetaInfoMap {
 		}
 	};
 
-	static class SafeReadWriteColumn extends
-			SafeReadWrite<ReadOnlyArray<String>, ReadOnlyArray<String>> {
+	static class SafeReadWriteColumn extends SafeReadWrite<ReadOnlyArray<String>, ReadOnlyArray<String>> {
 		@Override
 		ReadOnlyArray<String> writeLogic(ReadOnlyArray<String> newColumn) {
 			// double check
@@ -61,8 +59,7 @@ public class MetaInfoMap {
 		}
 	};
 
-	static class SafeReadWriteType extends
-			SafeReadWrite<ReadOnlyInts, ReadOnlyInts> {
+	static class SafeReadWriteType extends SafeReadWrite<ReadOnlyInts, ReadOnlyInts> {
 		@Override
 		ReadOnlyInts writeLogic(ReadOnlyInts newTypes) {
 			// double check
@@ -81,8 +78,7 @@ public class MetaInfoMap {
 	};
 
 	/**
-	 * if old one exists return old one or create and put new one and return new
-	 * one
+	 * if old one exists return old one or create and put new one and return new one
 	 * 
 	 * @param cl
 	 * @return
@@ -101,8 +97,7 @@ public class MetaInfoMap {
 	 * @param newColumns
 	 * @return
 	 */
-	public static ReadOnlyArray<String> getOrPutColumns(
-			ReadOnlyArray<String> newColumns) {
+	public static ReadOnlyArray<String> getOrPutColumns(ReadOnlyArray<String> newColumns) {
 		ReadOnlyArray<String> oldOne = rwColumnInfo.read(newColumns);
 		if (oldOne != null)
 			return oldOne;

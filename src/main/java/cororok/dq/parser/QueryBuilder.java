@@ -20,11 +20,9 @@ public interface QueryBuilder {
 
 	abstract void addExtText(Token token) throws ParsingException;
 
-	abstract void addSharedId(Token token, int startingPosition)
-			throws ParsingException;
+	abstract void addSharedId(Token token, int startingPosition) throws ParsingException;
 
-	abstract void addSubId(Token token, int startingPosition)
-			throws ParsingException;
+	abstract void addSubId(Token token, int startingPosition) throws ParsingException;
 
 	abstract void addText(Token token) throws ParsingException;
 

@@ -61,8 +61,7 @@ public class DefaultQueryBuilder implements QueryBuilder {
 	}
 
 	@Override
-	public void addSubId(Token token, int startPosition)
-			throws ParsingException {
+	public void addSubId(Token token, int startPosition) throws ParsingException {
 		String value = token.getStringAndReset();
 		log.debug(value);
 		this.tempExtQuery = new TempQuery(value);
@@ -73,8 +72,7 @@ public class DefaultQueryBuilder implements QueryBuilder {
 	}
 
 	@Override
-	public void addSharedId(Token token, int startingPosition)
-			throws ParsingException {
+	public void addSharedId(Token token, int startingPosition) throws ParsingException {
 		addSubId(token, startingPosition);
 	}
 
@@ -120,9 +118,7 @@ public class DefaultQueryBuilder implements QueryBuilder {
 
 	@Override
 	public int sizeOfTotalExtQueries() {
-		return totalExtQueries
-				+ (tempMainQuery == null ? 0 : tempMainQuery.tempExtQueries
-						.size());
+		return totalExtQueries + (tempMainQuery == null ? 0 : tempMainQuery.tempExtQueries.size());
 	}
 
 }

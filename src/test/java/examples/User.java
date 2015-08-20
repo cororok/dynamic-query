@@ -3,8 +3,7 @@ package examples;
 import java.sql.Timestamp;
 
 /**
- * QueryUtil access member variables including private ones directly. But it
- * does not use methods.
+ * QueryUtil access member variables including private ones directly. But it does not use methods.
  * 
  * @author songduk.park cororok@gmail.com
  * 
@@ -49,7 +48,7 @@ public class User extends BasicUser {
 	}
 
 	public String toString() {
-		return "id=" + getId() + ", userName=" + getUserName() + ", amount="
-				+ amount + ", memo=" + memo + ", created=" + created;
+		return "id=" + getId() + ", userName=" + getUserName() + ", amount=" + amount + ", memo=" + memo + ", created="
+				+ created;
 	}
 }

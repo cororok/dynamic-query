@@ -71,8 +71,7 @@ public class TextHandler extends AbstractCharacterHandler {
 
 	@Override
 	public void putSeparator() throws ParsingException {
-		context.warn("detected '" + Characters.SEPARATOR
-				+ "'  Maybe you missed ';' at the end of the previous query.");
+		context.warn("detected '" + Characters.SEPARATOR + "'  Maybe you missed ';' at the end of the previous query.");
 		putChar(Characters.SEPARATOR);
 	}
 

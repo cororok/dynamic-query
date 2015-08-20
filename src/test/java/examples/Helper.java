@@ -6,6 +6,7 @@ import cororok.dq.parser.ParsingException;
 
 public class Helper {
 	private static QueryMap map;
+
 	static {
 		try {
 			new Helper();

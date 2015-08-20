@@ -13,13 +13,11 @@ import cororok.dq.mapper.TimestampResultSetMapper;
 import cororok.dq.parser.ParsingException;
 
 /**
- * It contains final (fixed size, read only ) mainQueries and dynamic subQueries
- * which grows. It creates and returns QueryUtil for Query/SubQuery. A query is
- * shared by threads and queryUtils. But each different queryUtil should be used
- * by each thread.
+ * It contains final (fixed size, read only ) mainQueries and dynamic subQueries which grows. It creates and returns
+ * QueryUtil for Query/SubQuery. A query is shared by threads and queryUtils. But each different queryUtil should be
+ * used by each thread.
  * 
- * You would use IOC, singleton class or static class to maintain this instance
- * during the application runs.
+ * You would use IOC, singleton class or static class to maintain this instance during the application runs.
  * 
  * @author songduk.park cororok@gmail.com
  * 
@@ -52,8 +50,7 @@ public class QueryMap {
 		}
 	}
 
-	public QueryMap(Map<String, MainQuery> mainQueries, Map subQueries)
-			throws ParsingException {
+	public QueryMap(Map<String, MainQuery> mainQueries, Map subQueries) throws ParsingException {
 		this.mainQueries = mainQueries;
 		this.subQueries = subQueries;
 		updateSharedQuery();
@@ -66,10 +63,8 @@ public class QueryMap {
 	/**
 	 * create a QueryUtil for subQuery of mainQuery
 	 * 
-	 * @param mainQuery
-	 *            main Query
-	 * @param subIds
-	 *            sub ids of main Query
+	 * @param mainQuery main Query
+	 * @param subIds sub ids of main Query
 	 * @return
 	 */
 	public QueryUtil createQueryUtil(Query mainQuery, String... subIds) {
@@ -79,8 +74,7 @@ public class QueryMap {
 	/**
 	 * create a QueryUtil for Query of mainId
 	 * 
-	 * @param mainId
-	 *            id of main Query
+	 * @param mainId id of main Query
 	 * @return
 	 */
 	public QueryUtil createQueryUtil(String mainId) {
@@ -90,18 +84,15 @@ public class QueryMap {
 	/**
 	 * create a QueryUtil for subQuery of mainQuery
 	 * 
-	 * @param mainId
-	 *            id of main Query
-	 * @param subIds
-	 *            sub ids of main Query
+	 * @param mainId id of main Query
+	 * @param subIds sub ids of main Query
 	 * @return
 	 */
 	public QueryUtil createQueryUtil(String mainId, String... subIds) {
 		return createQueryUtil(getQuery(mainId, subIds));
 	}
 
-	Query getOrCreateSubQuery(MainQuery mainQuery, String newId,
-			String... subIds) {
+	Query getOrCreateSubQuery(MainQuery mainQuery, String newId, String... subIds) {
 		int count = countSub.get();
 		Query oldOne = null;
 		oldOne = subQueries.get(newId);
@@ -134,10 +125,8 @@ public class QueryMap {
 	/**
 	 * return a subQuery of main Query.
 	 * 
-	 * @param mainQuery
-	 *            main Query
-	 * @param subIds
-	 *            sub ids of main Query
+	 * @param mainQuery main Query
+	 * @param subIds sub ids of main Query
 	 * @return
 	 */
 	public Query getQuery(Query mainQuery, String... subIds) {
@@ -147,8 +136,7 @@ public class QueryMap {
 	/**
 	 * return a main Query whose id is mainId.
 	 * 
-	 * @param mainId
-	 *            id of main Query
+	 * @param mainId id of main Query
 	 * @return
 	 */
 	public Query getQuery(String mainId) {
@@ -158,10 +146,8 @@ public class QueryMap {
 	/**
 	 * return a sub Query of main Query.
 	 * 
-	 * @param mainId
-	 *            id of main Query
-	 * @param subIds
-	 *            sub ids of main Query
+	 * @param mainId id of main Query
+	 * @param subIds sub ids of main Query
 	 * @return
 	 */
 	public Query getQuery(String mainId, String... subIds) {
@@ -188,10 +174,9 @@ public class QueryMap {
 	}
 
 	/**
-	 * replaces current parameterMapper with new one. But it does not replace
-	 * old one that belongs to already instantiated QueryUtils. Probably it will
-	 * be called at the first time to use customized ParameterMapper not default
-	 * ParameterMapper.
+	 * replaces current parameterMapper with new one. But it does not replace old one that belongs to already
+	 * instantiated QueryUtils. Probably it will be called at the first time to use customized ParameterMapper not
+	 * default ParameterMapper.
 	 * 
 	 * 
 	 * @param parameterMapper

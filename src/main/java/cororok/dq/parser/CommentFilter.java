@@ -27,8 +27,7 @@ public class CommentFilter {
 
 		if (isString) {
 			handler.putCharWhileString(c);
-			if (c == Characters.SINGLE_QUOTE
-					&& previous != Characters.BACKSLASH)
+			if (c == Characters.SINGLE_QUOTE && previous != Characters.BACKSLASH)
 				isString = false;
 		} else if (isLineComment) {
 			if (c == Characters.NEWLINE) {

@@ -33,23 +33,20 @@ public class Characters {
 	 * @return true if a-z | A-Z | 0-9 | _
 	 */
 	public static boolean isValidCharOfName(char c) {
-		if (c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z' || c >= '0' & c <= '9'
-				|| c == '_')
+		if (c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z' || c >= '0' & c <= '9' || c == '_')
 			return true;
 
 		return false;
 	}
 
 	public static boolean isWhiteSpace(char c) {
-		if (c == Characters.SPACE || c == Characters.NEWLINE
-				|| c == Characters.TAB || c == Characters.NEWLINE_RETURN)
+		if (c == Characters.SPACE || c == Characters.NEWLINE || c == Characters.TAB || c == Characters.NEWLINE_RETURN)
 			return true;
 
 		return false;
 	}
 
-	public static void checkValidName(char c)
-			throws UnsupportedCharacterException {
+	public static void checkValidName(char c) throws UnsupportedCharacterException {
 		if (isValidCharOfName(c))
 			return;
 
@@ -61,13 +58,11 @@ public class Characters {
 	 * 
 	 * A_a/A_A/a_a -> aA
 	 * 
-	 * a1 -> a1, a_1 -> a_1 : It keeps '_' because to support reverse
-	 * conversion.
+	 * a1 -> a1, a_1 -> a_1 : It keeps '_' because to support reverse conversion.
 	 * 
 	 * a__a -> a_A
 	 * 
-	 * @param columnNameInSQL
-	 *            table column name
+	 * @param columnNameInSQL table column name
 	 * @return name of java fields
 	 */
 	public static String convertColumnName(String columnNameInSQL) {
@@ -110,8 +105,7 @@ public class Characters {
 	/**
 	 * javaName to sqlName, ex) userName -> user_name
 	 * 
-	 * @param javaName
-	 *            name of java variable
+	 * @param javaName name of java variable
 	 * @return name of table column
 	 */
 	public static String convertJavaName(String javaName) {

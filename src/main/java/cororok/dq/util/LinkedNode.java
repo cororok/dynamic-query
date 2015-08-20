@@ -16,6 +16,5 @@ public interface LinkedNode<K, E extends LinkedNode<K, E>> {
 	public E getPrevios();
 
 	public K getKey();
-	
 
 }

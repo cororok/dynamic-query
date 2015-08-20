@@ -14,9 +14,8 @@ import java.sql.Timestamp;
 import java.util.Calendar;
 
 /**
- * It is a wrapper class of {@link java.sql.PreparedStatement}. It will create a
- * PreparedStatement when setConnection method is called and unbound the
- * PreparedStatement when close method is called.
+ * It is a wrapper class of {@link java.sql.PreparedStatement}. It will create a PreparedStatement when setConnection
+ * method is called and unbound the PreparedStatement when close method is called.
  * 
  * 
  * @author songduk.park cororok@gmail.com
@@ -112,8 +111,7 @@ public abstract class AbstractQueryUtil {
 	}
 
 	/**
-	 * creates a PreparedStatement by calling
-	 * connection.prepareStatement(query.getText())
+	 * creates a PreparedStatement by calling connection.prepareStatement(query.getText())
 	 */
 	public void setConnection(Connection connection) throws SQLException {
 		this.connection = connection;
@@ -121,15 +119,13 @@ public abstract class AbstractQueryUtil {
 	}
 
 	/**
-	 * does 1. setConnection(Connection connection); 2.
-	 * connection.setAutoCommit(autoCommit);
+	 * does 1. setConnection(Connection connection); 2. connection.setAutoCommit(autoCommit);
 	 * 
 	 * @param connection
 	 * @param autoCommit
 	 * @throws SQLException
 	 */
-	public void setConnection(Connection connection, boolean autoCommit)
-			throws SQLException {
+	public void setConnection(Connection connection, boolean autoCommit) throws SQLException {
 		setConnection(connection);
 		connection.setAutoCommit(autoCommit);
 	}
@@ -193,8 +189,7 @@ public abstract class AbstractQueryUtil {
 	/**
 	 * {@link java.sql.PreparedStatement#setObject}
 	 */
-	public void setObject(Object x, int targetSqlType, int scaleOrLength)
-			throws SQLException {
+	public void setObject(Object x, int targetSqlType, int scaleOrLength) throws SQLException {
 		this.ps.setObject(parameterIndex++, x, targetSqlType, scaleOrLength);
 	}
 
@@ -250,9 +245,8 @@ public abstract class AbstractQueryUtil {
 	}
 
 	/**
-	 * It does not close Connection. it does not commit/rollback that is up to
-	 * you. It closes PreparedStatement and ResultSet and unbound them including
-	 * Connection.
+	 * It does not close Connection. it does not commit/rollback that is up to you. It closes PreparedStatement and
+	 * ResultSet and unbound them including Connection.
 	 * 
 	 * @throws SQLException
 	 */

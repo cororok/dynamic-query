@@ -12,8 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * reads input sources and calls context to handle characters. It can call an
- * external file recursively.
+ * reads input sources and calls context to handle characters. It can call an external file recursively.
  * 
  * @author songduk.park cororok@gmail.com
  * 
@@ -85,19 +84,15 @@ public class QueryParser implements CommentHandler, FileInfo {
 				}
 		}
 
-		int totalMainQueries = context.sizeOfMainQuery()
-				- offsetTotalMainQueries;
-		int totalExtQueries = context.sizeOfTotalExtQueries()
-				- offsetTotalExtQueries;
+		int totalMainQueries = context.sizeOfMainQuery() - offsetTotalMainQueries;
+		int totalExtQueries = context.sizeOfTotalExtQueries() - offsetTotalExtQueries;
 
 		logger.info("ends parsing " + this.url);
-		logger.info("total main Queries : " + totalMainQueries
-				+ ", total ext Queries : " + totalExtQueries);
+		logger.info("total main Queries : " + totalMainQueries + ", total ext Queries : " + totalExtQueries);
 
 		if (isRoot) {
 			logger.info("finished every files (If there were nested files)");
-			logger.info("Over all, total main Queries : "
-					+ context.sizeOfMainQuery() + ", total ext Queries : "
+			logger.info("Over all, total main Queries : " + context.sizeOfMainQuery() + ", total ext Queries : "
 					+ context.sizeOfTotalExtQueries());
 		}
 	}
@@ -238,7 +233,6 @@ public class QueryParser implements CommentHandler, FileInfo {
 
 	@Override
 	public void warn(String msg) {
-		logger.warn(msg + "\nPlease check it in " + getFilePath() + ": at row="
-				+ rowNum + ", col=" + colNum);
+		logger.warn(msg + "\nPlease check it in " + getFilePath() + ": at row=" + rowNum + ", col=" + colNum);
 	}
 }
