@@ -7,7 +7,9 @@ import cororok.dq.parser.ParsingException;
 import cororok.dq.util.CachedMap;
 
 /**
- * It limits the maximum size of subQuery. if it reaches the maximum(cacheSize) it removes old one.
+ * {@link QueryMap} holds every query so if there are two many queries and needs to limit the number of the query it is
+ * useful. It limits the maximum size of subQuery but not mainQuery. if it reaches the maximum(cacheSize) it removes old
+ * one.
  * 
  * @author songduk.park cororok@gmail.com
  * 

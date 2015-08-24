@@ -40,7 +40,7 @@ public class QueryMap {
 
 	public QueryMap(Map<String, MainQuery> mainQueries) throws ParsingException {
 		this.mainQueries = mainQueries;
-		subQueries = new HashMap<String, Query>();
+		subQueries = new HashMap<>();
 		updateSharedQuery();
 	}
 

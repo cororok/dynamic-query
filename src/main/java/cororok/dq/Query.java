@@ -14,7 +14,7 @@ import cororok.dq.util.ReadOnlyInts;
 public class Query {
 
 	String text;
-	String id;
+	final String id;
 
 	String[] parameters;
 

@@ -12,11 +12,8 @@ public class HelperTest {
 	private static void singleQueryMapCase() {
 		QueryMap map = Helper.getQueryMap();
 
-		System.out.println(map);
-		System.out.println("------");
-
-		map = Helper.getQueryMap();
-		System.out.println(map);
+		QueryMap map1 = Helper.getQueryMap();
+		System.out.println("should be the same map: " + (map == map1));
 	}
 
 	private static void queryMapHelperTest() {

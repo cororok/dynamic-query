@@ -1,5 +1,11 @@
 package examples;
 
+/**
+ * POJO bean, doesn't have to be matched a specific table.
+ * 
+ * @author songduk.park cororok@gmail.com
+ *
+ */
 public class BasicUser {
 	private String id;
 	private String userName;

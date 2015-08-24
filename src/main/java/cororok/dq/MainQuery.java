@@ -8,7 +8,7 @@ import java.util.Map;
 import cororok.dq.parser.ParsingException;
 
 /**
- * It can have 0 ... N ExtQueries.
+ * is used to return SQL query text without additional ExtQueries. It can have 0 ... N ExtQueries.
  * 
  * @author songduk.park cororok@gmail.com
  * 

@@ -3,6 +3,8 @@ package cororok.dq.util;
 import java.util.Iterator;
 
 /**
+ * Immutable array
+ * 
  * @author songduk.park cororok@gmail.com
  *
  * @param <E>

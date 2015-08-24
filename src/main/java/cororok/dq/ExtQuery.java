@@ -3,7 +3,7 @@ package cororok.dq;
 import java.util.List;
 
 /**
- * It is an extended sql of MainQuery.
+ * It is an extended sql from MainQuery.
  * 
  * @author songduk.park cororok@gmail.com
  * 

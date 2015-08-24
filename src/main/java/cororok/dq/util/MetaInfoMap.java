@@ -5,6 +5,8 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
+ * a special map for high currency.
+ * 
  * @author songduk.park cororok@gmail.com
  * 
  */
@@ -118,5 +120,4 @@ public class MetaInfoMap {
 
 		return rwTypeInfo.write(newTypes);
 	}
-
 }

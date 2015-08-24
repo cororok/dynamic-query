@@ -26,7 +26,6 @@ public class SimpleParameterMapper implements ParameterMapper {
 
 	@Override
 	public void setParameterValue(PreparedStatement ps, int parameterIndex, Object parameterValue) throws SQLException {
-
 		if (parameterValue instanceof String)
 			ps.setString(parameterIndex, (String) parameterValue);
 		else if (parameterValue instanceof Integer)
@@ -51,7 +50,6 @@ public class SimpleParameterMapper implements ParameterMapper {
 	@Override
 	public void setParameterValue(PreparedStatement ps, int parameterIndex, Object parameterValue, int fieldType)
 			throws SQLException {
-
 		switch (fieldType) {
 		case JavaTypes.STRING:
 			ps.setString(parameterIndex, (String) parameterValue);

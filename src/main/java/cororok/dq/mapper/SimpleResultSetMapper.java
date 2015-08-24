@@ -4,8 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- * 
- * return it as its Object
+ * simply return value using rs.getObject(..) method.
  * 
  * @author songduk.park cororok@gmail.com
  * 

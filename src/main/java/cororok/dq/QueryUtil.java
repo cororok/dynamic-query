@@ -450,7 +450,13 @@ public class QueryUtil extends ResultSetQueryUtil {
 				throw new Exception("In the bean, can't find " + param);
 
 			Object value = info.getFieldValue(fieldIndex, bean);
-			parameterMapper.setParameterValue(ps, ++i, value, info.getFieldType(fieldIndex));
+			int fieldType = info.getFieldType(fieldIndex);
+			try {
+				parameterMapper.setParameterValue(ps, ++i, value, fieldType);
+			} catch (Exception e) {
+				throw new ParamerSettingException(i, param, value, fieldType, e);
+			}
+
 		}
 	}
 
@@ -468,7 +474,12 @@ public class QueryUtil extends ResultSetQueryUtil {
 				throw new SQLException("No key in the map for " + param);
 
 			Object value = values.get(param);
-			parameterMapper.setParameterValue(ps, ++i, value);
+			try {
+				parameterMapper.setParameterValue(ps, ++i, value);
+			} catch (Exception e) {
+				throw new ParamerSettingException(i, param, value, e);
+			}
+
 		}
 	}
 
@@ -485,7 +496,12 @@ public class QueryUtil extends ResultSetQueryUtil {
 		int i = 0;
 		while (i < sizeOfParameters) {
 			Object value = objs[i];
-			parameterMapper.setParameterValue(ps, ++i, value);
+			try {
+				parameterMapper.setParameterValue(ps, ++i, value);
+			} catch (Exception e) {
+				throw new ParamerSettingException(i, query.getParameter(i - 1), value, e);
+			}
+
 		}
 	}
 
@@ -499,7 +515,12 @@ public class QueryUtil extends ResultSetQueryUtil {
 		if (1 != sizeOfParameters)
 			throw new SQLException("sizeOfParameters is not 1 but it is " + sizeOfParameters);
 
-		parameterMapper.setParameterValue(ps, 1, obj);
+		try {
+			parameterMapper.setParameterValue(ps, 1, obj);
+		} catch (Exception e) {
+			throw new ParamerSettingException(1, query.getParameter(0), obj, e);
+		}
+
 	}
 
 	/**

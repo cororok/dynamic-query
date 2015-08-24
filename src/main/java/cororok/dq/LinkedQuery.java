@@ -3,6 +3,7 @@ package cororok.dq;
 import cororok.dq.util.LinkedNode;
 
 /**
+ * {@link achedQueryMap} uses it.
  * 
  * @author songduk.park cororok@gmail.com
  * 

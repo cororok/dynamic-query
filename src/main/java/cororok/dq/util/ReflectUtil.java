@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 /**
+ * factory class. makes ReflectInfo from given class.
  * 
  * @author songduk.park cororok@gmail.com
  * 

@@ -14,6 +14,9 @@ import cororok.dq.QueryMap;
 import cororok.dq.parser.ParsingException;
 
 /**
+ * convenient util class which holds QueryMaps in a static map. It reads query information from dq.properties in
+ * classpath.
+ * 
  * @author songduk.park cororok@gmail.com
  *
  */

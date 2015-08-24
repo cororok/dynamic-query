@@ -24,7 +24,7 @@ public class Sample {
 	String jdbcUserPw = "test1234";
 
 	QueryMap qm;
-	QueryMap qm2; // you can create a multiple qm.
+	QueryMap qm2; // you can create multiple qm.
 
 	String queryFilePath = "examples/sample.sql";
 

@@ -25,7 +25,6 @@ public class DateResultSetMapper implements ResultSetMapper {
 
 	@Override
 	public Object getObject(ResultSet rs, int columnIndex, int columnType) throws SQLException {
-
 		switch (columnType) {
 		case Types.TIME:
 			return getJavaDate(rs.getTimestamp(columnIndex));

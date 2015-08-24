@@ -9,14 +9,13 @@ import java.util.Iterator;
  */
 public class ArrayIterator<E> implements Iterator<E> {
 
-	private E[] ts;
+	private E[] es;
 	private int position = -1;
 	private int lastIndex;
 
-	public ArrayIterator(E[] ts) {
-		this.ts = ts;
-		this.lastIndex = ts.length - 1;
-
+	public ArrayIterator(E[] es) {
+		this.es = es;
+		this.lastIndex = es.length - 1;
 	}
 
 	@Override
@@ -26,7 +25,7 @@ public class ArrayIterator<E> implements Iterator<E> {
 
 	@Override
 	public E next() {
-		return ts[++position];
+		return es[++position];
 	}
 
 	@Override

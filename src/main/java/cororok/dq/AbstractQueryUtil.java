@@ -235,6 +235,9 @@ public abstract class AbstractQueryUtil {
 		this.ps.setTimestamp(parameterIndex++, x, cal);
 	}
 
+	/**
+	 * close rs and reset parameterIndex so that it can restart from setting parameters and execute query again.
+	 */
 	void reset() {
 		parameterIndex = 1;
 		if (rs != null)

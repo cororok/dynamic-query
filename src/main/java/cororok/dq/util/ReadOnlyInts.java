@@ -1,6 +1,7 @@
 package cororok.dq.util;
 
 /**
+ * for performance it uses primitive array.
  * 
  * @author songduk.park cororok@gmail.com
  * 
