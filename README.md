@@ -112,14 +112,14 @@ try {
 
 
 ## Dependency
-It uses a log library **SLF4J**. download library from below 
-	http://www.slf4j.org
+It uses a log library **SLF4J**. see pom.xml
 
 
 ## Usage
 see demo firt **./demo/examples/Sample.java**
 
-1. Copy and put a jar file **./dist/cororok-dq-1.1.jar** to your project
+0. build jar file through maven it will create **./target/dynamic-query-1.1.0-SNAPSHOT.jar**
+1. Copy and put above jar to your project
 2. write your **sql files**. It can be located anywhere
 3. (Optional file) **dq.properties**
 
