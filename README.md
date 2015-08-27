@@ -116,7 +116,7 @@ It uses a log library **SLF4J**. see pom.xml
 
 
 ## Usage
-see demo firt **./demo/examples/Sample.java**
+see demo firt **./src/test/java/examples/Sample.java**
 
 0. build jar file through maven it will create **./target/dynamic-query-1.1.0-SNAPSHOT.jar**
 1. Copy and put above jar to your project
