@@ -54,7 +54,7 @@ public class ReadOnlyArray<E extends Comparable<E>> implements Comparable<ReadOn
 		if (o == this)
 			return true;
 
-		if (o instanceof ReadOnlyArray)
+		if (getClass() != o.getClass())
 			return false;
 
 		ReadOnlyArray<E> mo = (ReadOnlyArray<E>) o;

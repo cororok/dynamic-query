@@ -17,7 +17,7 @@ import cororok.dq.TempQuery;
 public class DefaultQueryBuilder implements QueryBuilder {
 
 	Logger log = LoggerFactory.getLogger(this.getClass());
-	Map<String, MainQuery> mainQueries = new HashMap<String, MainQuery>();
+	Map<String, MainQuery> mainQueries = new HashMap<>();
 
 	TempQuery tempMainQuery;
 	TempQuery tempExtQuery;

@@ -51,7 +51,7 @@ public class ReadOnlyInts implements Comparable<ReadOnlyInts> {
 		if (this == o)
 			return true;
 
-		if (o instanceof ReadOnlyInts)
+		if (getClass() != o.getClass())
 			return false;
 
 		ReadOnlyInts mo = (ReadOnlyInts) o;

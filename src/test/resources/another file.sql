@@ -1,7 +1,7 @@
 list: select 11111		
 
 /*
- Above query missed ';' at the end. 
+ Above query missed ';' at the end.
  so the parser thinks there is no list2 below
  but only one id 'list' containing below llist2.
  see warning.

@@ -1,4 +1,5 @@
-list0:select 1 from x;
+list0:select 1 from x --comment
+;
 
 & another file.sql ;
 
